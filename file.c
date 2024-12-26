@@ -118,12 +118,17 @@ void add_item()
 
 void view_item()
 {
-    printf("\nItems in the inventory are as follows:\n");
-    printf("ID\tNAME\tQUANTITY\tPRICE($)\n\n");
-    for (int i = 0; i < item_count; i++)
+    if (item_count != 0)
     {
-        printf("%2d\t%s\t%2d\t%.1f\n", inventory[i].id, inventory[i].name, inventory[i].quantity, inventory[i].price);
+        printf("\nItems in the inventory are as follows:\n");
+        printf("ID\tNAME\tQUANTITY\tPRICE($)\n\n");
+        for (int i = 0; i < item_count; i++)
+        {
+            printf("%2d\t%s\t%2d\t%.1f\n", inventory[i].id, inventory[i].name, inventory[i].quantity, inventory[i].price);
+        }
     }
+    else
+        printf("No items to display!\n");
     printf("\n");
 }
 
@@ -151,7 +156,6 @@ void delete_item(int id)
 
 void update_item(int id)
 {
-    // printf("\nWork in progress...\n");
     int pos = id - 1;
     int len = sizeof(inventory) / sizeof(Item);
 

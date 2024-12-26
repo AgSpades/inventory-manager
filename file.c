@@ -20,6 +20,16 @@ void search_item(char *);
 void view_item();
 void delete_item(int);
 void update_item(int);
+int total_value()
+{
+    int sum = 0;
+    for (int i = 0; i < item_count; i++)
+    {
+        sum += inventory[i].price;
+    }
+
+    return sum;
+}
 int main()
 {
     while (1)
@@ -46,7 +56,8 @@ int main()
                 printf("3. View item\n");
                 printf("4. Delete item\n");
                 printf("5. Update item\n");
-                printf("6. Exit\n");
+                printf("6. Calculate total value of items in inventory\n");
+                printf("7. Exit\n");
                 int choice;
                 printf("Enter choice: ");
                 scanf("%d", &choice);
@@ -83,6 +94,11 @@ int main()
                     update_item(id);
                     break;
                 case 6:
+                    view_item();
+                    printf("Total value of items in inventory:");
+                    printf("%d\n\n", total_value());
+                    break;
+                case 7:
                     printf("Exiting...\n");
                     exit(0);
                     break;
